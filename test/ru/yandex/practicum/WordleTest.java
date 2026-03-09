@@ -59,7 +59,7 @@ class WordleTest {
         scanner = new Scanner("\n\n\n\n\n\n");
         logFile = new LogFile(logFilePath.toString(), scanner);
         wordleDictionaryLoader = new WordleDictionaryLoader(dictionaryFilePath.toString(), logFile, scanner);
-        wordleDictionary = new WordleDictionary(wordleDictionaryLoader,logFile);
+        wordleDictionary = new WordleDictionary(wordleDictionaryLoader, logFile);
     }
 
     @Test
@@ -118,7 +118,7 @@ class WordleTest {
         wordle.clue("книга");
         wordle.clue("книга");
         assertThrows(AttemptsLeftException.class, () ->
-               wordle.clue("книга"));
+                wordle.clue("книга"));
     }
 
     @Test

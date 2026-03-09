@@ -29,7 +29,7 @@ public class LogFileTest {
     Path tempDir;
 
     @Test
-    void creationLogFileInUnrealPath(){
+    void creationLogFileInUnrealPath() {
         assertThrows(LogFileException.class, () ->
                 new LogFile("KASDA:\\", scanner));
     }
@@ -61,8 +61,8 @@ public class LogFileTest {
         try (BufferedReader reader = new BufferedReader(new FileReader(logFile.getPath(), StandardCharsets.UTF_8))) {
             String line = "";
             while ((line = reader.readLine()) != null) {
-                filesText+= line;
-                }
+                filesText += line;
+            }
         } catch (IOException exception) {
             fail("Не должно быть ошибки чтения файла");
         }

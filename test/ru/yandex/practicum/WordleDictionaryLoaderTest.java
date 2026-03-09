@@ -25,7 +25,7 @@ class WordleDictionaryLoaderTest {
     }
 
     @Test
-    void creationFileInUnrealPathAndCheckLog(){
+    void creationFileInUnrealPathAndCheckLog() {
         LogFile logFile = new LogFile(scanner);
         assertThrows(WordleDictionaryLoaderException.class, () ->
                 new WordleDictionaryLoader("KASDASD:\\IdeaProjects\\java-wordle4j\\word.txt",
@@ -35,7 +35,7 @@ class WordleDictionaryLoaderTest {
         try (BufferedReader reader = new BufferedReader(new FileReader(logFile.getPath(), StandardCharsets.UTF_8))) {
             String line = "";
             while ((line = reader.readLine()) != null) {
-                filesText+= line;
+                filesText += line;
             }
         } catch (IOException exception) {
             fail("Не должно быть ошибки чтения файла");
@@ -86,7 +86,7 @@ class WordleDictionaryLoaderTest {
         try (BufferedReader reader = new BufferedReader(new FileReader(logFile.getPath(), StandardCharsets.UTF_8))) {
             String line = "";
             while ((line = reader.readLine()) != null) {
-                filesText+= line;
+                filesText += line;
             }
         } catch (IOException exception) {
             fail("Не должно быть ошибки чтения файла");
