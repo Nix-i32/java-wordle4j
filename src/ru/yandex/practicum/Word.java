@@ -60,14 +60,14 @@ public class Word {
         return false;
     }
 
-    public ArrayList<Character> LetterContains(Word otherWord) {
+    public ArrayList<Character> letterContains(Word otherWord) {
         Set<Character> thisWord = new HashSet<>(this.letterWithoutPos());
         Set<Character> wordToCompare = new HashSet<>(otherWord.letterWithoutPos());
         thisWord.retainAll(wordToCompare);
         return new ArrayList<>(thisWord);
     }
 
-    public boolean LetterContains(List<Character> otherLetters) {
+    public boolean letterContains(List<Character> otherLetters) {
         List<Character> letters = letterWithoutPos();
         return letters.containsAll(otherLetters);
     }

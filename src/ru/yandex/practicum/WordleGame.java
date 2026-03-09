@@ -55,7 +55,7 @@ public class WordleGame {
             }
         }
 
-        ArrayList<Character> justSameLetters = answers.LetterContains(tryWord);
+        ArrayList<Character> justSameLetters = answers.letterContains(tryWord);
         if (!justSameLetters.isEmpty()) {
             for (Character cha : justSameLetters) {
                 for (Map.Entry<WordCharacter, LetterStatus> entry : letterStatus.entrySet()) {
@@ -88,7 +88,7 @@ public class WordleGame {
                 unknownPositionToChar.add(letter.getLetter());
             }
             for (Word word1 : dictionary.getAtLeastOneLetterAnywhere()) {
-                if (word1.LetterContains(unknownPositionToChar)) {
+                if (word1.letterContains(unknownPositionToChar)) {
                     words.add(word1);
                 }
             }
