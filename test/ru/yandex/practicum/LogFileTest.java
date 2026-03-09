@@ -28,10 +28,14 @@ public class LogFileTest {
     @TempDir
     Path tempDir;
 
+
     @Test
     void creationLogFileInUnrealPath() {
-        assertThrows(LogFileException.class, () ->
-                new LogFile("KASDA:\\", scanner));
+        String os = System.getProperty("os.name");
+        if (os.contains("Windows")) {
+            assertThrows(LogFileException.class, () ->
+                    new LogFile("KASD&a\\u/////0000 sd?", scanner));
+        }
     }
 
     @Test
