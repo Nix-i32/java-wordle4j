@@ -87,9 +87,9 @@ public class WordleGame {
             for (WordCharacter letter : unknownPosition) {
                 unknownPositionToChar.add(letter.getLetter());
             }
-            for (Word word1 : dictionary.getAtLeastOneLetterAnywhere()) {
-                if (word1.letterContains(unknownPositionToChar)) {
-                    words.add(word1);
+            for (Word word : dictionary.getAtLeastOneLetterAnywhere()) {
+                if (word.letterContains(unknownPositionToChar)) {
+                    words.add(word);
                 }
             }
         } else {

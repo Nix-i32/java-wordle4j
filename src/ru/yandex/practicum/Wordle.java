@@ -22,7 +22,6 @@ public class Wordle {
         }
         WordleDictionary wordleDictionary = new WordleDictionary(wordleDictionaryLoader, logFile);
         WordleGame wordleGame = new WordleGame(wordleDictionary, logFile);
-        System.out.println(wordleGame.getAnswers().getWord());
         while (wordleGame.isGameOn()) {
             System.out.print("Введите слово: ");
             String guess = scanner.nextLine();

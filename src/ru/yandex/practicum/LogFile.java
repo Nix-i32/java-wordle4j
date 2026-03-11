@@ -12,11 +12,14 @@ import java.io.FileWriter;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 
+
 public class LogFile {
     private String path;
+    private static final String DEFAULT_LOG_FILE_PATH = "logFile.txt";
+    private static final int MAX_CREATE_FILE_ATTEMPTS = 3;
 
     public LogFile(Scanner scanner) {
-        this("logFile.txt", scanner);
+        this(DEFAULT_LOG_FILE_PATH, scanner);
     }
 
     public LogFile(String path, Scanner scanner) throws LogFileException {
@@ -25,7 +28,7 @@ public class LogFile {
     }
 
     private void createLogFile(String path, Scanner scannerFromConstructor) throws LogFileException {
-        int tries = 3;
+        int tries = MAX_CREATE_FILE_ATTEMPTS;
 
         while (tries > 0) {
             try {

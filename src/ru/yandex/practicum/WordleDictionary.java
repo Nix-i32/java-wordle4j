@@ -9,11 +9,11 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class WordleDictionary {
-    private Word puzzleWord;
-    private Set<Word> words;
-    private ArrayList<Word> atLeastOneLetterAnywhere;
-    private Map<WordCharacter, Set<Word>> wordsByLetterPos;
-    private LogFile logFile;
+    private final Word puzzleWord;
+    private final Set<Word> words;
+    private final ArrayList<Word> atLeastOneLetterAnywhere;
+    private final Map<WordCharacter, Set<Word>> wordsByLetterPos;
+    private final LogFile logFile;
 
     public WordleDictionary(WordleDictionaryLoader wordleDictionaryLoader, LogFile logFile, Word puzzleWord) {
         this.words = wordleDictionaryLoader.getAllWords();

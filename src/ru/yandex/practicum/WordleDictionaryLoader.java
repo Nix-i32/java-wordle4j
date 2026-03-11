@@ -13,26 +13,29 @@ import java.io.IOException;
 
 
 public class WordleDictionaryLoader {
-    private Set<Word> allWords;
+    private static final String DEFAULT_DICTIONARY_FILE_PATH = "words_ru.txt";
+    private static final int MAX_LOAD_ATTEMPTS = 3;
+    private static final  int INITIAL_DICTIONARY_CAPACITY = 7000;
+    private final Set<Word> allWords;
     private String path;
-    private LogFile logFile;
+    private final LogFile logFile;
     private final Scanner scanner;
 
     public WordleDictionaryLoader(LogFile logFile, Scanner scanner) {
-        this("words_ru.txt", logFile, scanner);
+        this(DEFAULT_DICTIONARY_FILE_PATH, logFile, scanner);
     }
 
     public WordleDictionaryLoader(String path, LogFile logFile, Scanner scanner)
             throws WordleDictionaryLoaderException {
-        allWords = new HashSet<>(7000);
+        allWords = new HashSet<>(INITIAL_DICTIONARY_CAPACITY);
         this.path = path;
         this.logFile = logFile;
         this.scanner = scanner;
         loadWordsFromFile();
     }
 
-    public void loadWordsFromFile() throws WordleDictionaryLoaderException {
-        int tries = 3;
+    private void loadWordsFromFile() throws WordleDictionaryLoaderException {
+        int tries = MAX_LOAD_ATTEMPTS;
         Path filePath;
         while (tries > 0) {
             try {
@@ -72,7 +75,7 @@ public class WordleDictionaryLoader {
                 }
 
                 if (allWords.isEmpty()) {
-                    throw new WordleDictionaryLoaderException(String.format("Файrл: %s - не содержит слов из 5 букв",
+                    throw new WordleDictionaryLoaderException(String.format("Файл: %s - не содержит слов из 5 букв",
                             path));
                 }
                 return;
